@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اسئلة دينية</title>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #f4f3ef, #d6e8d1);
+            background-size: cover;
+            animation: backgroundAnimation 30s infinite linear;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+
+        header {
+            background-color: #006b3c;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid #004d2c;
+            font-size: 30px;
+            font-family: 'Tajawal', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            position: relative;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background-image: url('https://www.transparenttextures.com/patterns/stone-wall.png');
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+
+        .question:last-of-type {
+            border-bottom: none;
+        }
+
+        .question h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #006b3c;
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.5;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            margin-bottom: 12px;
+        }
+
+        .options label {
+            display: block;
+            padding: 18px 15px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .options input {
+            display: none;
+        }
+
+        .options label:hover {
+            background-color: #e3f2f1;
+        }
+
+        .options input:checked + label {
+            background-color: #c8e6c9;
+            border-color: #00796b;
+            color: #004d40;
+        }
+
+        .correct {
+            background-color: #81c784;
+            border-color: #388e3c;
+        }
+
+        .incorrect {
+            background-color: #e57373;
+            border-color: #d32f2f;
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .results h3 {
+            margin-bottom: 20px;
+            color: #006b3c;
+            font-size: 26px;
+        }
+
+        .results p {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .results ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .results ul li {
+            margin-bottom: 12px;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .results .correct {
+            background-color: #c8e6c9;
+            color: #388e3c;
+            font-weight: bold;
+        }
+
+        .results .incorrect {
+            background-color: #f8d7da;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        button {
+            background-color: #00796b;
+            color: #fff;
+            padding: 18px 25px;
+            font-size: 22px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>أسئلة عن الانبياء والرسل</h1>
+    </header>
+    <div class="container">
+        <div id="quiz">
+            <!-- الأسئلة -->
+            <div class="question" data-correct="2">
+                <h3>1. تَرتيبُ أُولي العَزمِ حَسبَ الأفضَليَّةِ</h3>
+                <ul class="options">
+                    <li><input type="radio" id="q1a1" name="q1" value="1"><label for="q1a1">مُحمَّدٌ ثُمَّ مُوسَى ثُمَّ نُوحٌ ثُمَّ إبراهيمُ ثُمَّ عِيسَى</label></li>
+                    <li><input type="radio" id="q1a2" name="q1" value="2"><label for="q1a2">مُحمَّدٌ ثُمَّ إبراهيمُ ثُمَّ الثَّلاثةُ الآخَرونَ بغَيرِ تَفضيلٍ</label></li>
+                    <li><input type="radio" id="q1a3" name="q1" value="3"><label for="q1a3">إبراهيمُ ثُمَّ مُحمَّدٌ ثُمَّ نُوحٌ ثُمَّ مُوسَى ثُمَّ عِيسَى</label></li>
+                </ul>
+            </div>
+
+            <div class="question" data-correct="1">
+                <h3>2. قَولُه تَعالى: {كَذَّبَتْ ثَمُودُ الْمُرْسَلِينَ}</h3>
+                <ul class="options">
+                    <li><input type="radio" id="q2a1" name="q2" value="1"><label for="q2a1">دَليلٌ على وُجوبِ الإيمانِ بالرُّسُلِ جَميعًا؛ فالمُكذِّبُ لواحِدٍ مُكذِّبٌ للجَميعِ</label></li>
+                    <li><input type="radio" id="q2a2" name="q2" value="2"><label for="q2a2">دَليلٌ على أنَّ اللهَ أرسَلَ لهم قَبلَ صالِحٍ رُسُلًا فكَذَّبوهم</label></li>
+                    <li><input type="radio" id="q2a3" name="q2" value="3"><label for="q2a3">دَليلٌ على أنَّ صالِحًا لم يَكُنْ وَحدَه، بل كان مَعَه أنْبياءُ أُخَرُ</label></li>
+                </ul>
+            </div>
+
+            <div class="question" data-correct="2">
+                <h3>3. عَدَدُ الرُّسُلِ جَميعًا</h3>
+                <ul class="options">
+                    <li><input type="radio" id="q3a1" name="q3" value="1"><label for="q3a1">25</label></li>
+                    <li><input type="radio" id="q3a2" name="q3" value="2"><label for="q3a2">313</label></li>
+                    <li><input type="radio" id="q3a3" name="q3" value="3"><label for="q3a3">120000</label></li>
+                </ul>
+            </div>
+
+            <div class="question" data-correct="3">
+                <h3>4. حَبسَ اللهُ الشَّمسَ فلم تَغرُبْ حتَّى انتَصَر نَبيُّ اللهِ</h3>
+                <ul class="options">
+                    <li><input type="radio" id="q4a1" name="q4" value="1"><label for="q4a1">دَاودُ</label></li>
+                    <li><input type="radio" id="q4a2" name="q4" value="2"><label for="q4a2">مُوسَى</label></li>
+                    <li><input type="radio" id="q4a3" name="q4" value="3"><label for="q4a3">يُوشَعُ بنُ نُونٍ</label></li>
+                </ul>
+            </div>
+
+            <div class="question" data-correct="1">
+                <h3>5. الأنْبياءُ مَعصومونَ</h3>
+                <ul class="options">
+                    <li><input type="radio" id="q5a1" name="q5" value="1"><label for="q5a1">منَ الكبائرِ إجماعًا، وغَيرُ مَعْصومينَ منَ الصَّغائرِ على الرَّاجِحِ</label></li>
+                    <li><input type="radio" id="q5a2" name="q5" value="2"><label for="q5a2"منَ</label>منَ الكَبائرِ إجماعًا ومنَ الصَّغائرِ على الرَّاجحِ</li>
+                    <li><input type="radio" id="q5a3" name="q5" value="3"><label for="q5a3">منَ الكَبائرِ والصَّغائرِ إجماعًا</label></li>
+                </ul>
+            </div>
+
+            <div class="question" data-correct="2">
+                <h3>6. الرِّقة في الأنْبياءِ</h3>
+                <ul class="options">
+                    <li><input type="radio" id="q6a1" name="q6" value="1"><label for="q6a1">ليس عَيبًا</label></li>
+                    <li><input type="radio" id="q6a2" name="q6" value="2"><label for="q6a2">عَيبٌ، ولم يَكُنْ نَبيٌّ رَقيقًا</label></li>
+                    <li><input type="radio" id="q6a3" name="q6" value="3"><label for="q6a3">شَرطٌ في نُبوَّتِهم</label></li>
+                </ul>
+            </div>
+
+            <div class="question" data-correct="1">
+                <h3>7. وَحيُ اللهِ إلى الحَوارِيِّينَ وإلى أُمِّ مُوسَى وإلى النَّحلِ</h3>
+                <ul class="options">
+                    <li><input type="radio" id="q7a1" name="q7" value="1"><label for="q7a1">وَحيٌ بالإلهامِ</label></li>
+                    <li><input type="radio" id="q7a2" name="q7" value="2"><label for="q7a2">وَحيٌ عن طَريقِ المُكاشَفةِ وإلقاءِ الحُجُبِ</label></li>
+                    <li><input type="radio" id="q7a3" name="q7" value="3"><label for="q7a3">كالوَحيِ إلى الأنبِياءِ</label></li>
+                </ul>
+            </div>
+
+            <div class="question" data-correct="3">
+                <h3>8. النُّبُوَّةِ تُنالُ</h3>
+                <ul class="options">
+                    <li><input type="radio" id="q8a1" name="q8" value="1"><label for="q8a1">بالجِدِّ والاجتِهادِ في العِبادةِ</label></li>
+                    <li><input type="radio" id="q8a2" name="q8" value="2"><label for="q8a2">بتَهذيبِ النَّفسِ وتَطهيرِ الأخلاقِ</label></li>
+                    <li><input type="radio" id="q8a3" name="q8" value="3"><label for="q8a3">باصطِفاءِ اللهِ تَعالى</label></li>
+                </ul>
+            </div>
+
+            <!-- المزيد من الأسئلة -->
+            
+            <button id="showResultsButton" onclick="showResults()" disabled>عرض النتيجة</button>
+
+            <div id="results" class="results">
+                <h3>نتيجة الاختبار</h3>
+                <p id="score"></p>
+                <ul id="answerList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll('.question');
+        const showResultsButton = document.getElementById('showResultsButton');
+
+        questions.forEach((question) => {
+            const options = question.querySelectorAll('input[type="radio"]');
+            options.forEach((option) => {
+                option.addEventListener('change', () => {
+                    checkAnswers();
+                });
+            });
+        });
+
+        function checkAnswers() {
+            let allAnswered = true;
+            questions.forEach((question) => {
+                const options = question.querySelectorAll('input[type="radio"]');
+                let answered = false;
+                options.forEach((option) => {
+                    if (option.checked) {
+                        answered = true;
+                    }
+                });
+                if (!answered) {
+                    allAnswered = false;
+                }
+            });
+            showResultsButton.disabled = !allAnswered;
+        }
+
+        function showResults() {
+            let score = 0;
+            let answerList = '';
+
+            questions.forEach((question, index) => {
+                const correctAnswer = question.getAttribute('data-correct');
+                const selectedAnswer = question.querySelector('input[type="radio"]:checked');
+                if (selectedAnswer) {
+                    const optionLabel = selectedAnswer.nextElementSibling.textContent;
+                    if (selectedAnswer.value === correctAnswer) {
+                        score++;
+                        answerList += `<li class="correct">السؤال ${index + 1}: ${optionLabel} - إجابة صحيحة</li>`;
+                    } else {
+                        answerList += `<li class="incorrect">السؤال ${index + 1}: ${optionLabel} - إجابة خاطئة</li>`;
+                    }
+                }
+            });
+
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `لقد حصلت على ${score} من ${questions.length}`;
+
+            const answerListElement = document.getElementById('answerList');
+            answerListElement.innerHTML = answerList;
+
+            document.getElementById('results').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
